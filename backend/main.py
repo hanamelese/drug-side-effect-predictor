@@ -10,15 +10,7 @@ app = FastAPI(title="Drug Side Effect Prediction API")
 # Enable CORS (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",          # local dev
-        "http://127.0.0.1:5173",          # local dev
-        "https://drug-side-effect-predictor.vercel.app"  # deployed frontend
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+    allow_origins=["*"],)
 
 # Load trained model
 model = joblib.load("model/side_effect_model.joblib")
