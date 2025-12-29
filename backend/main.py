@@ -10,7 +10,13 @@ app = FastAPI(title="Drug Side Effect Prediction API")
 # Enable CORS (IMPORTANT)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],)
+    app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],        # Allow all domains
+    allow_credentials=True,     # Allow cookies/auth headers if needed
+    allow_methods=["*"],        # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],        # Allow all headers (Content-Type, Authorization, etc.)
+))
 
 # Load trained model
 model = joblib.load("model/side_effect_model.joblib")
